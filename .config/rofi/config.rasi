@@ -1,0 +1,8 @@
+@theme "squared-everforest"
+
+configuration {
+    show-icons: true;
+    drun-show-icons: true;
+    
+    display-drun: "";
+}

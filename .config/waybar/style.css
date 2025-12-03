@@ -1,0 +1,114 @@
+@import "colors.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: @on_background;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* Common style for "Pills" / Modules */
+.modules-left>widget:first-child>#workspaces,
+.modules-left>widget:first-child>* {
+    margin-left: 0;
+}
+
+.modules-right>widget:last-child>* {
+    margin-right: 0;
+}
+
+#workspaces,
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#power-profiles-daemon,
+#mpd {
+    padding: 0 10px;
+    margin: 0 5px;
+    color: @on_primary;
+    background-color: @primary;
+    border-radius: 10px;
+    box-shadow: 2px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+#power-profiles-daemon {
+    padding: 0 10px;
+    background-color: transparent;
+    color: @on_background;
+    border-radius: 15px;
+}
+
+#workspaces {
+    background-color: @surface_container;
+    color: @on_background;
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    background-color: transparent;
+    color: @on_background;
+    border-radius: 15px;
+}
+
+#workspaces button.active {
+    background-color: @primary;
+    color: @on_primary;
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.68);
+}
+
+#clock {
+    background-color: @secondary;
+    color: @on_secondary;
+    font-weight: bold;
+}
+
+#battery {
+    background-color: @tertiary;
+    color: @on_tertiary;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @on_secondary;
+    background-color: @secondary;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @error;
+    color: @on_error;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #f80000;
+        color: #000000;
+    }
+}
